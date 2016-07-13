@@ -59,12 +59,6 @@ var AddressForm = React.createClass({
           value={this.state.address}
           onChange={this.handleAddressChange}
         />
-        <input
-          type="text"
-          placeholder="Enter suburb"
-          value={this.state.suburb}
-          onChange={this.handleSuburbChange}
-        />
         <Typeahead
           onChange={this.handleSuburbChange}
           options={['CABRAMATTA, 2166, NSW', 'CAMPBELLTOWN, 2560, NSW', 'CAMPERDOWN, 2050, NSW','CAMBRIDGE, 4822, QLD', 'CAMBRIDGE, 7170, TAS']}

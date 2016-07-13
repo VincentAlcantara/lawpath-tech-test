@@ -1,0 +1,9 @@
+.typeahead-selector {
+	-webkit-padding-start: 0;
+}
+.typeahead-selector li {
+	border: 1px solid;
+    list-style: none;
+    padding: 3px;
+    width: 250px;
+}

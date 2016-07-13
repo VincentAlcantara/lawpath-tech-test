@@ -8,7 +8,8 @@ var APP_DIR = path.resolve(__dirname, 'src');
 var config = {
   entry: {
     html: APP_DIR + '/index.html',
-    javascript: APP_DIR + '/index.js'
+    javascript: APP_DIR + '/index.js',
+    css: APP_DIR + '/styles.css'
   },
   output: {
     filename: 'app.js',
@@ -22,7 +23,7 @@ var config = {
         exclude: [NODE_MODULE_PATH]
       },
       {
-        test: /\.html$/,
+        test: /\.html|.css$/,
         loader: "file?name=[name].[ext]",
       }
     ]
