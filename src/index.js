@@ -1,5 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
+import axios from 'axios'
+var Typeahead = require('react-typeahead').Typeahead;
+
 
 var AddressForm = React.createClass({
   getInitialState: function() {
@@ -8,23 +11,28 @@ var AddressForm = React.createClass({
   handleAddressChange: function(e) {
     this.setState({address: e.target.value});
   },
-  getSuburbs: function(typeahead) {
-  	$.ajax({
-  		type: "GET",
-  		headers: "AUTH-KEY: 872608e3-4530-4c6a-a369-052accb03ca8",
-  		dataType: 'jsonp',
-  		url: "https://digitalapi.auspost.com.au/postcode/search.json?q=" + typeahead,
-  		success: function(response) {
-  			this.handleSuburbChange(response) //
-  		}.bind(this),
-  		error: function(xhr, status, err) {
-    		console.error(this.props.url, status, err.toString());
-  		}.bind(this)
-  	});
+  getSuburbs: function(addrQueryStr) {
+  	 axios
+      .get(
+        `https://digitalapi.auspost.com.au/postcode/search.json?q=${addrQueryStr}`,
+        {
+          headers: {
+            'auth-key': '872608e3-4530-4c6a-a369-052accb03ca8',
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+      )
+      .then(function(res) {
+        console.log(res)
+      })
+      .catch(function(err) {
+        console.log(err)
+      })
   },
   handleSuburbChange: function(e) {
   	// check if the suburb is at least 3 characters before calling api
   	// if no match set an error
+    this.getSuburbs(e.target.value);
     this.setState({suburb: e.target.value});
   },
   handlePostCode: function(e) {
@@ -45,7 +53,6 @@ var AddressForm = React.createClass({
   render: function() {
     return (
       <form className="AddressForm" onSubmit={this.handleSubmit}>
-        <div>You've won a prize.  Enter your details to win</div>
         <input
           type="text"
           placeholder="Enter address"
@@ -57,6 +64,11 @@ var AddressForm = React.createClass({
           placeholder="Enter suburb"
           value={this.state.suburb}
           onChange={this.handleSuburbChange}
+        />
+        <Typeahead
+          onChange={this.handleSuburbChange}
+          options={['CABRAMATTA, 2166, NSW', 'CAMPBELLTOWN, 2560, NSW', 'CAMPERDOWN, 2050, NSW','CAMBRIDGE, 4822, QLD', 'CAMBRIDGE, 7170, TAS']}
+          placeholder="Enter suburb"
         />
          <input
           type="text"

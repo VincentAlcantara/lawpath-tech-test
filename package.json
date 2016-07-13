@@ -12,7 +12,8 @@
   "dependencies": {
     "axios": "^0.12.0",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "react-typeahead": "^3.7.5"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
