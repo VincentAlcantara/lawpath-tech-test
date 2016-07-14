@@ -1,11 +1,9 @@
-lawpath-tech-test
 #Lawpath Technical Test
 
 This is the solution I submitted for the Lawpath Technical Test.  The aim of the test was to create a form which used Australia Post's Postcode/Suburb search.
 https://developers.auspost.com.au/apis/pac/reference/postcode-search
 
 Note: This is my first ReactJS project.  It was challenging especially coming from an AngularJS paradigm, but overall it was a great project to get introduced to ReactJS.
-
 
 ## Quick start
 Clone or download this repository to your computer.  Change in to the directory that was just downloaded.
