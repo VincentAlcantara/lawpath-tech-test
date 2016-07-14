@@ -4,7 +4,7 @@
   "description": "Lookup australian address using suburb/postcode information",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base dist/ --hot --inline",
+    "start": "node server & webpack-dev-server --content-base dist/ --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,7 +13,7 @@
     "axios": "^0.12.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-typeahead": "^3.7.5"
+    "react-typeahead": "^2.0.0-alpha.5"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
