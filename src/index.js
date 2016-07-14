@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 var axios = require('axios');
 var Typeahead = require('react-typeahead').Typeahead;
 
-
 var AddressForm = React.createClass({
   getInitialState: function() {
     return {address: '', suburb: ''};
@@ -32,24 +31,22 @@ var AddressForm = React.createClass({
     }
   },
   handleSuburbChange: function(e) {
-    // this.getSuburbs(e.target.value);
     this.setState({suburb: e});
   },
   handleSubmit: function(e) {
-    e.preventDefault();
+    
     var address = this.state.address.trim();
     var suburb = this.state.suburb.trim();
     if (!suburb || !address) {
       return; // Exit if there's not a valid address or suburb
     }
-    window.alert('We will send you your prize to:' + address + ', ' + suburb);
+    window.alert('You entered the following address:' + address + ', ' + suburb);
     this.setState({address: '', suburb: '', suburbs: []});
   },
   render: function() {
     return (
       <form className="AddressForm" onSubmit={this.handleSubmit}>
-        <label>
-          Please enter your address:
+        <label>Please enter your address
         </label>
         <input
           type="text"
