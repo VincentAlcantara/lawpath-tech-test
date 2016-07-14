@@ -1,6 +1,13 @@
+/*
+ * This is a simple Express app to overcome the CORS limitation if we were to 
+ * attempt to peform the GET request directly from the client (browser).
+ * 
+ * The main app (in index.js) makes a GET request to localhost:3000/address.
+ * This app then makes the GET request to the Auspost API.
+ *
+ */
 var express = require('express')
 var request = require('request')
-
 var app = express();
 
 app.get('/address', function(req, res) {
