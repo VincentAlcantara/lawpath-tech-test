@@ -1,8 +1,7 @@
 jest.unmock('../src/index');
 
 import React from 'react';
-import {render} from 'react-dom'
-
+import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import axios from 'axios';
 var Typeahead = require('react-typeahead').Typeahead;
