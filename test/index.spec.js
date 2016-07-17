@@ -4,18 +4,22 @@ import {expect} from 'chai';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-var AddressForm = require('../src/index').default;
+const AddressForm = require('../src/components/AddressForm.js').default;
+
 
 describe('Address Search Mocha Tests', function () {
  
   jsdom()
  
   it('has document', function () {
-    var div = document.createElement('div')
-    expect(div.nodeName).eql('DIV')
+    var div = document.createElement('div');
+    expect(div.nodeName).eql('DIV');
+    
   })
 
   it('has an AddressForm', function () {
+    jsdom()
+
   	var AddressFormComponent = TestUtils.renderIntoDocument(<AddressForm/>);
     expect(AddressFormComponent).to.not.be.undefined;
   })

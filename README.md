@@ -21,3 +21,9 @@ If you would like to see a response from the Auspost GET API for the postcode/su
 http://localhost:3000/address?q={queryString} in a browser.  e.g. http://localhost:3000/address?q=Sydney.
 
 The response is what I used to populate the typeahead for the suburb/postcode field.
+
+## Unit Tests
+Unit tests are done using mocha.  To run:
+```
+npm test
+```
