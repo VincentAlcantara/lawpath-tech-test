@@ -80,4 +80,4 @@ export default class AddressForm extends React.Component {
   }
 }
 
-// ReactDOM.render(<AddressForm/>, document.getElementById('app'));
+ReactDOM.render(<AddressForm/>, document.getElementById('app'));
