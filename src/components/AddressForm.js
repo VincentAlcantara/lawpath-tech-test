@@ -23,6 +23,7 @@ export default class AddressForm extends React.Component {
     // check if the suburb is at least 3 characters before calling api
     // if no match set an error
     var addrQueryStr = e.target.value;
+    this.setState({suburbs: []}); // reset the surburb options - works on backspace
     if (addrQueryStr.length > 2) {
       axios
       .get(`http://localhost:3000/address?q=${addrQueryStr}`) // we need to do this for CORS

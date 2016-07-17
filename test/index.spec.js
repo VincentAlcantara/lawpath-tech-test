@@ -4,22 +4,15 @@ import {expect} from 'chai';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-addons-test-utils';
+
 const AddressForm = require('../src/components/AddressForm.js').default;
 
 
 describe('Address Search Mocha Tests', function () {
- 
-  jsdom()
- 
-  it('has document', function () {
-    var div = document.createElement('div');
-    expect(div.nodeName).eql('DIV');
-    
-  })
+  jsdom();  // This is required to create a 'document'
 
   it('has an AddressForm', function () {
-    jsdom()
-
   	var AddressFormComponent = TestUtils.renderIntoDocument(<AddressForm/>);
     expect(AddressFormComponent).to.not.be.undefined;
   })
@@ -31,5 +24,22 @@ describe('Address Search Mocha Tests', function () {
     expect(inputFields.length).to.eql(2);
   });
  
+  it('AddressForm is made up of a typeahead field', function () {
+    var AddressFormComponent = TestUtils.renderIntoDocument(<AddressForm/>);
+    var suburbField = TestUtils.findRenderedDOMComponentWithClass(AddressFormComponent, 'typeahead');
+    
+    expect(suburbField).to.not.be.undefined;
+  });
+  
+  it('The typeahead will not appear if only two characters are entered', function () {
+    var AddressFormComponent = TestUtils.renderIntoDocument(<AddressForm/>);
+    var suburbField = TestUtils.findRenderedDOMComponentWithClass(AddressFormComponent, 'typeahead');
+    
+    suburbField.value = 'UL';
+    ReactTestUtils.Simulate.change(suburbField);
+    var suburbOptions = TestUtils.scryRenderedDOMComponentsWithClass(AddressFormComponent, 'typeahead-selector');
+    expect(suburbOptions.length).to.eql(0);
+  });
+
 });
 
