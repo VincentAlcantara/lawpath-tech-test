@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 var AddressForm = require('../src/index').default;
 
-describe('mocha tests', function () {
+describe('Address Search Mocha Tests', function () {
  
   jsdom()
  
@@ -16,10 +16,16 @@ describe('mocha tests', function () {
   })
 
   it('has an AddressForm', function () {
-  	var AddressFormInsert = TestUtils.renderIntoDocument(
-      <AddressForm/>
-    );
+  	var AddressFormComponent = TestUtils.renderIntoDocument(<AddressForm/>);
+    expect(AddressFormComponent).to.not.be.undefined;
   })
 
+  it('AddressForm is made up of an two input fields', function () {
+  	var AddressFormComponent = TestUtils.renderIntoDocument(<AddressForm/>);
+  	var inputFields = TestUtils.scryRenderedDOMComponentsWithTag(AddressFormComponent, 'input');
+  	
+    expect(inputFields.length).to.eql(2);
+  });
  
-})
+});
+
