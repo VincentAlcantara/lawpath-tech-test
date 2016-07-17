@@ -3,14 +3,24 @@ var ReactDOM = require('react-dom');
 var axios = require('axios');
 var Typeahead = require('react-typeahead').Typeahead;
 
-var AddressForm = React.createClass({
-  getInitialState: function() {
-    return {address: '', suburb: ''};
-  },
-  handleAddressChange: function(e) {
+export default class AddressForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      address: '',
+      suburb: '',
+      suburbs: []
+    }
+    this.getSuburbs = this.getSuburbs.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleSuburbChange = this.handleSuburbChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleAddressChange(e) {
     this.setState({address: e.target.value});
-  },
-  getSuburbs: function(e) {
+  }
+  getSuburbs(e) {
     // check if the suburb is at least 3 characters before calling api
     // if no match set an error
     var addrQueryStr = e.target.value;
@@ -29,12 +39,14 @@ var AddressForm = React.createClass({
         }
       })
     }
-  },
-  handleSuburbChange: function(e) {
+  }
+  
+  handleSuburbChange(e) {
     this.setState({suburb: e});
-  },
-  handleSubmit: function(e) {
-    
+  }
+  
+  handleSubmit(e) {  
+    // e.preventDefault();
     var address = this.state.address.trim();
     var suburb = this.state.suburb.trim();
     if (!suburb || !address) {
@@ -42,8 +54,9 @@ var AddressForm = React.createClass({
     }
     window.alert('You entered the following address:' + address + ', ' + suburb);
     this.setState({address: '', suburb: '', suburbs: []});
-  },
-  render: function() {
+  }
+
+  render () {
     return (
       <form className="AddressForm" onSubmit={this.handleSubmit}>
         <label>Please enter your address
@@ -65,12 +78,6 @@ var AddressForm = React.createClass({
       </form>
     );
   }
-});
-
-class App extends React.Component {
-  render () {
-    return <AddressForm />;
-  }
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+// ReactDOM.render(<AddressForm/>, document.getElementById('app'));
