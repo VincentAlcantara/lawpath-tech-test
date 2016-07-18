@@ -4,7 +4,7 @@
   "description": "Lookup australian address using suburb/postcode information",
   "main": "app.js",
   "scripts": {
-    "start": "node server; webpack-dev-server --content-base dist/ --hot --inline",
+    "start": "node server & webpack-dev-server --content-base dist/ --hot --inline",
     "test": "mocha --compilers js:babel-register \"./test/*.spec.js\""
   },
   "babel": {
