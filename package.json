@@ -4,7 +4,7 @@
   "description": "Lookup australian address using suburb/postcode information",
   "main": "app.js",
   "scripts": {
-    "start": "node server & webpack-dev-server --content-base dist/ --hot --inline",
+    "start": "node server; webpack-dev-server --content-base dist/ --hot --inline",
     "test": "mocha --compilers js:babel-register \"./test/*.spec.js\""
   },
   "babel": {
@@ -34,7 +34,7 @@
     "babel-preset-react": "^6.11.1",
     "chai": "^3.5.0",
     "file-loader": "^0.9.0",
-    "jsdom": "^3.1.2",
+    "jsdom": "^3.1.",
     "mocha": "^2.5.3",
     "mocha-jsdom": "^1.1.0",
     "path": "^0.12.7",
